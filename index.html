@@ -7,22 +7,53 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
     <style>
-        body { margin: 0; padding: 0; }
+        body { margin: 0; padding: 0; font-family: 'Glacial Indifference', sans-serif; }
         #map { width: 100%; height: 100vh; }
+
+        /* Custom popup styles */
+        .mapboxgl-popup-content {
+            background-color: #FDFAF2; /* Beige background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            font-family: 'Glacial Indifference', sans-serif; /* Font style */
+            padding: 10px;
+        }
+        .mapboxgl-popup-content h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .mapboxgl-popup-content p {
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .mapboxgl-popup-content a {
+            color: #4a90e2; /* Subtle blue for links */
+            text-decoration: none;
+        }
+        .mapboxgl-popup-content a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div id="map"></div>
+    <!-- Manual Attribution -->
+    <div style="font-size: 10px; text-align: center; margin-top: 10px;">
+        © <a href="https://www.mapbox.com/" target="_blank">Mapbox</a> © <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>
+    </div>
     <script>
         // Add your Mapbox access token
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGhhc2h1bnQiLCJhIjoiY20zZ2xuMWVhMDYxZTJscTI4MTliOGZ1cyJ9.Pm24znSX8e7wAt8cZXzbNA';
 
-        // Initialize the map
+        // Initialize the map with attribution disabled
         const map = new mapboxgl.Map({
             container: 'map', // ID of the container
             style: 'mapbox://styles/marthashunt/cm3glrgvr008701s12qz97kj6', // Your custom style
             center: [0, 20], // Adjusted center to show all markers
-            zoom: 2 // Initial zoom level
+            zoom: 2, // Initial zoom level
+            attributionControl: false // Disable default attribution
         });
 
         // Stories data as GeoJSON
@@ -85,3 +116,4 @@
     </script>
 </body>
 </html>
+
